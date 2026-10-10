@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="tl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0a0c12"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><title>SWERTENG LINK Admin</title>
+<style>
+.logo-picker{display:grid;gap:10px}.logo-preview{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid #36e6c0;background:#171b27;display:none}.logo-preview.show{display:block}.logo-help{font-size:.9rem;color:#aab0c2}.admin-logo{width:46px;height:46px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #36e6c0}.admin-item-head{display:flex;align-items:center;gap:12px;min-width:0}
+</style></head>
+<body>
+<header class="top"><a class="brand" href="./"><span class="logo">S</span><span><b>SWERTENG LINK</b><small>ADMIN APP</small></span></a><a class="button ghost" href="./">Public Website</a></header>
+<main class="container">
+<section class="hero compact"><span class="eyebrow">PRIVATE MANAGEMENT</span><h1>Admin Panel</h1><p>Magdagdag, mag-edit, at mag-update ng player links.</p></section>
+<div id="setupWarning" class="alert hidden"></div>
+<section id="authPanel" class="panel">
+<h2>Admin Login</h2><p class="muted">Gamitin ang email at password na ginawa mo sa Supabase Authentication.</p>
+<form id="loginForm" class="form"><label>Email<input id="email" type="email" autocomplete="username" required placeholder="admin@example.com"></label><label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Password"></label><button class="button primary" type="submit">Mag-login</button></form>
+<p id="authMessage" class="status" role="status"></p>
+</section>
+<section id="appPanel" class="hidden">
+<div class="panel account"><div><b id="signedInAs">Naka-login</b><p class="muted">Admin session</p></div><button id="logout" class="button ghost">Logout</button></div>
+<section class="panel" id="analyticsPanel">
+<h2>Website Analytics</h2>
+<p class="muted">Statistics mula nang ma-install ang analytics; hindi nito mababawi ang dating visits.</p>
+<div class="stats analytics-stats"><span><b id="visitCount">0</b> visits</span><span><b id="clickCount">0</b> player clicks</span><span><b id="uniqueLinksCount">0</b> links clicked</span></div>
+<button class="button ghost" id="refreshAnalytics" type="button">Refresh Analytics</button>
+<p id="analyticsMessage" class="status" role="status"></p><div id="popularLinks" class="popular-links"></div>
+</section>
+<section class="panel" id="socialSettingsPanel">
+  <h2>Facebook at Telegram Settings</h2>
+  <p class="muted">Ilagay ang links na ipapakita sa public website. Kailangang naka-login bilang admin para mag-save.</p>
+  <form id="socialSettingsForm" class="form">
+    <label class="wide">Facebook URL
+      <input id="facebookUrl" type="url" inputmode="url" placeholder="https://facebook.com/yourpage">
+    </label>
+    <label class="wide">Telegram URL
+      <input id="telegramUrl" type="url" inputmode="url" placeholder="https://t.me/yourchannel">
+    </label>
+    <div class="actions wide"><button class="button primary" type="submit">Save Social Links</button></div>
+  </form>
+  <p id="socialSettingsMessage" class="status" role="status" aria-live="polite"></p>
+</section>
+<section class="panel"><h2 id="formHeading">Magdagdag ng player link</h2>
+<form id="linkForm" class="form two">
+<input type="hidden" id="editId">
+<label>Pangalan ng link<input id="linkName" required maxlength="120" placeholder="Hal. Nova88 Casino"></label>
+<label>Category<input id="linkCategory" required maxlength="60" placeholder="Hal. Main / Featured"></label>
+<label class="wide">URL<input id="linkUrl" type="url" required placeholder="https://example.com"></label>
+<label class="wide">Logo ng link
+<div class="logo-picker"><input id="linkLogo" type="file" accept="image/png,image/jpeg,image/webp,image/gif"><img id="logoPreview" class="logo-preview" alt="Preview ng logo"><span class="logo-help">Pindutin ang “Pumili ng Logo” para pumili sa Gallery. PNG, JPG, WEBP o GIF; hanggang 5 MB.</span><button class="button ghost" id="clearLogo" type="button">Alisin ang napiling logo</button></div>
+</label>
+<label class="wide">Description (optional)<textarea id="linkDescription" rows="2" maxlength="300" placeholder="Maikling detalye"></textarea></label>
+<label class="check wide"><input id="isActive" type="checkbox" checked> Ipakita sa public website</label>
+<div class="actions wide"><button class="button primary" id="saveLink" type="submit">+ Save Link</button><button class="button ghost" id="cancelEdit" type="button">Clear</button></div>
+</form><p id="formMessage" class="status" role="status"></p></section>
+<section class="panel"><div class="listhead"><h2>Player links</h2><input id="adminSearch" type="search" placeholder="Search links…"></div><p id="listStatus" class="muted"></p><div id="adminLinks"></div></section>
+</section>
+</main><footer>SWERTENG LINK · Admin</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="admin.js"></script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
+</body></html>
