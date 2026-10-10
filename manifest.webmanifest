@@ -1,0 +1,11 @@
+{
+  "name": "SWERTENG LINK Admin",
+  "short_name": "Swerteng Link",
+  "description": "Manage SWERTENG LINK player directory",
+  "start_url": "./admin.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090a10",
+  "theme_color": "#0a0c12",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="tl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0c12"><link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<title>SWERTENG LINK</title>
+</head>
+<body>
+<header class="top"><a class="brand" href="./"><span class="logo">S</span><span><b>SWERTENG LINK</b><small>PLAYER LINKS DIRECTORY</small></span></a><a class="button ghost" href="admin.html">Admin Login</a></header>
+<main class="container">
+<section class="hero"><span class="eyebrow">LINK DIRECTORY</span><h1>Hanapin ang link na kailangan mo.</h1><p>Mga link sa iisang lugar, madaling hanapin sa cellphone.</p><div class="stats"><span><b id="count">0</b> links</span><span><b id="cats">0</b> categories</span></div></section>
+<section class="controls"><input id="search" type="search" placeholder="Maghanap ng player link..." aria-label="Search player links"><div id="filters" class="filters"></div></section>
+<section id="links" class="grid"><p class="muted">Naglo-load ng links…</p></section>
+<p id="notice" class="muted notice"></p>
+</main><footer>SWERTENG LINK</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="public.js"></script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
+</body></html>
