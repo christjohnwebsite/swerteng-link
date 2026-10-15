@@ -9,9 +9,9 @@
 <body>
 <header class="top"><a class="brand" href="./"><img class="logo" src="swerteng-link-logo.png" alt="SWERTENG LINK logo"><span><b>SWERTENG LINK</b><small>ALL PLAYER LINKS ARE LEGIT💯</small></span></a></header>
 
-<!-- DOWNLOAD APP BUTTON -->
+<!-- DOWNLOAD / INSTALL APP BUTTON -->
 <div class="download-container">
-  <a href="https://github.com/christjohnwebsite/swerteng-link/releases/download/V1.0.0/SWERTENG_LINKV1.apk" class="download-app-btn" target="_blank">📥 DOWNLOAD APP</a>
+  <button id="downloadBtn" class="download-app-btn">📥 DOWNLOAD APP</button>
 </div>
 
 <section id="social-links" class="social-links" aria-label="Facebook at Telegram"></section>
@@ -20,6 +20,48 @@
 <section class="controls"><input id="search" type="search" placeholder="Maghanap ng player link..." aria-label="Search player links"><div id="filters" class="filters"></div></section>
 <section id="links" class="grid"><p class="muted">Naglo-load ng links…</p></section>
 <p id="notice" class="muted notice"></p>
-</main><footer>OWNER & DEV: CHRIST JOHN M. OCAÑA</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="public.js"></script><script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
+</main>
+
+<!-- IOS INSTALL INSTRUCTION MODAL -->
+<div id="iosModal" class="ios-modal hidden">
+  <div class="ios-modal-content">
+    <h3>📱 Paano i-install sa iPhone</h3>
+    <p>Wala pang direktang APK download para sa iOS. Sunda kining mga lakang para ma-add sa imong Home Screen:</p>
+    <ol>
+      <div>1. I-tap ang <b>Share</b> button <span class="ios-icon">⎋</span> sa ibaba o taas sa imong Safari browser.</div>
+      <div>2. Pag-scroll down ug i-tap ang <b>"Add to Home Screen"</b> (<span class="ios-icon">➕</span>).</div>
+      <div>3. I-tap ang <b>Add</b> sa taas sa tuo aron makompleto!</div>
+    </ol>
+    <button id="closeModal" class="button primary open">Nakuha nako</button>
+  </div>
+</div>
+
+<footer>OWNER & DEV: CHRIST JOHN M. OCAÑA</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="public.js"></script>
+<script>
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+
+  // Smart Download Button Logic for Android vs iPhone
+  const androidApkUrl = "https://github.com/christjohnwebsite/swerteng-link/releases/download/V1.0.0/SWERTENG_LINKV1.apk";
+  
+  document.getElementById('downloadBtn').addEventListener('click', function(e) {
+    // Check if user is on iOS (iPhone / iPad)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    
+    if (isIOS) {
+      e.preventDefault();
+      document.getElementById('iosModal').classList.remove('hidden');
+    } else {
+      // Direct download for Android
+      window.location.href = androidApkUrl;
+    }
+  });
+
+  document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('iosModal').classList.add('hidden');
+  });
+</script>
 </body></html>
