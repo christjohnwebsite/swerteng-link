@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0c12"><link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="swerteng-link-logo.png" type="image/png"><link rel="stylesheet" href="styles.css">
+<title>SWERTENG LINK</title>
+</head>
+<body>
+<header class="top"><a class="brand" href="./"><img class="logo" src="swerteng-link-logo.png" alt="SWERTENG LINK logo"><span><b>SWERTENG LINK</b><small>ALL PLAYER LINKS ARE LEGIT💯</small></span></a></header>
+
+<!-- DOWNLOAD / INSTALL APP BUTTON -->
+<div class="download-container">
+  <button id="downloadBtn" type="button" class="download-app-btn">📥 DOWNLOAD APP</button>
+</div>
+
+<section id="social-links" class="social-links" aria-label="Facebook at Telegram"></section>
+<main class="container">
+<section class="hero"><span class="eyebrow">LEGIT ALL CASINO LINKS HERE</span><h1>Hanapin ang casino link na gusto mong laruan.</h1><p>⚠️ TANDAAN! Huwag gumamit ng pera na nakalaan para sa pangangailangan, bigas, diaper, o iba pang pangangailangan ng pamilya.✅Maglaro lamang kung may ekstrang pera.📌 Huwag isugal ang perang pinaghirapan.🔞 Para lamang sa mga nasa tamang edad. Huwag maglaro kung menor de edad.</p><div class="stats"><span><b id="count">0</b> links</span><span><b id="cats">0</b> categories</span></div></section>
+<section class="controls"><input id="search" type="search" placeholder="Maghanap ng player link..." aria-label="Search player links"><div id="filters" class="filters"></div></section>
+<section id="links" class="grid"><p class="muted">Naglo-load ng links…</p></section>
+<p id="notice" class="muted notice"></p>
+</main>
+
+<!-- IOS INSTALL INSTRUCTION MODAL -->
+<div id="iosModal" class="ios-modal hidden">
+  <div class="ios-modal-content">
+    <h3>📱 Paano i-install sa iPhone</h3>
+    <p>Wala pang direktang APK download para sa iOS. Sundin ang mga hakbang na ito para ma-add sa iyong Home Screen:</p>
+    <ol>
+      <div>1. I-tap ang <b>Share</b> button <span class="ios-icon">⎋</span> sa ibaba o taas ng iyong Safari browser.</div>
+      <div>2. Mag-scroll down at i-tap ang <b>"Add to Home Screen"</b> (<span class="ios-icon">➕</span>).</div>
+      <div>3. I-tap ang <b>Add</b> sa taas sa kanang bahagi para makumpleto!</div>
+    </ol>
+    <button id="closeModal" class="button primary open">Nakuha ko na</button>
+  </div>
+</div>
+
+<footer>OWNER & DEV: CHRIST JOHN M. OCAÑA</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="public.js"></script>
+<script>
+  if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+
+  const androidApkUrl = "https://github.com/christjohnwebsite/swerteng-link/releases/download/V1.0.0/SWERTENG_LINKV1.apk";
+  
+  document.getElementById('downloadBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    
+    if (isIOS) {
+      document.getElementById('iosModal').classList.remove('hidden');
+    } else {
+      window.location.href = androidApkUrl;
+    }
+  });
+
+  document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('iosModal').classList.add('hidden');
+  });
+</script>
+</body></html>
